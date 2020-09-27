@@ -1,62 +1,38 @@
 //sum of all distinct elements from the set
 ALGORITHM somme
 VAR
-    var set1: ARRAY_OF INTEGER[4];
-    var set2: ARRAY_OF INTEGER[4];
+    var set1: ARRAY_OF INTEGER();
+    var set2: ARRAY_OF INTEGER();
     sum: INTEGER:=0;
-    x:INTEGER;
+    x,j:INTEGER:=0;
 BEGIN
-    FOR i FROM 0 TO 3 STEP 1  DO
-        FOR j FROM 0 TO 3 STEP 1  DO
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        WHILE (j<>set2.length-1) DO
             IF (set1[i]<>set2[j]) THEN
                 x=set1[i]
-                else x=0;
-            END_IF            
-        END_FOR
-        sum=sum+x;
+                j=j+1
+            ELSE
+                x=0;
+                j=set2.length-1
+            END_IF
+        END_WHILE
+        sum=sum+x
     END_FOR
-    FOR i FROM 0 TO 3 STEP 1  DO
-        FOR j FROM 0 TO 3 STEP 1  DO
+    FOR i FROM 0 TO set2.length-1 STEP 1  DO
+        WHILE (j<>set1.length-1) DO
             IF (set2[i]<>set1[j]) THEN
                 x=set2[i]
+                j=j+1
+            ELSE
+                x=0;
+                j=set1.length-1
             END_IF
-        END_FOR
-        sum=sum+x;
+        END_WHILE
+        sum=sum+x
     END_FOR
     write(sum)
 END
 
-//sum of all distinct elements from the set(2eme méthode)
-ALGORITHM algorithm_name
-VAR
-    var set1: ARRAY_OF INTEGER[4];
-    var set2: ARRAY_OF INTEGER[4];
-    sum: INTEGER:=0;
-    stk: STACK;
-    j:INTEGER:=0
-BEGIN
-    FOR i FROM 0 TO 3 STEP 1  DO
-        WHILE (set1[i]=set2[j] and j<>4) DO
-            IF (stk.peek()<>set1[i]) THEN
-                stk.pop(set1[i])
-            END_IF
-            j=j+1;
-        END_WHILE
-    END_FOR
-    FOR i FROM 0 TO 3 STEP 1  DO
-        WHILE (set1[j]=set2[i] and j<>4) DO
-            IF (stk.peek()<>set2[i]) THEN
-                stk.pop(set2[i])
-            END_IF
-            j=j+1;
-        END_WHILE
-    END_FOR
-    WHILE (stk.isEmpty) DO
-        sum=sum+stk.peek;
-        stk.pop();
-    END_WHILE
-    write(sum);
-END
 
 //sum of overlapping elements in two sets
 
