@@ -7,25 +7,25 @@ VAR
     x,j:INTEGER:=0;
 BEGIN
     FOR i FROM 0 TO set1.length-1 STEP 1  DO
-        WHILE (j<>set2.length-1) DO
+        WHILE (j<set2.length) DO
             IF (set1[i]<>set2[j]) THEN
                 x=set1[i]
                 j=j+1
             ELSE
                 x=0;
-                j=set2.length-1
+                j=set2.length
             END_IF
         END_WHILE
         sum=sum+x
     END_FOR
     FOR i FROM 0 TO set2.length-1 STEP 1  DO
-        WHILE (j<>set1.length-1) DO
+        WHILE (j<set1.length) DO
             IF (set2[i]<>set1[j]) THEN
                 x=set2[i]
                 j=j+1
             ELSE
                 x=0;
-                j=set1.length-1
+                j=set1.length
             END_IF
         END_WHILE
         sum=sum+x
